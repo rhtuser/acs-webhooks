@@ -43,10 +43,10 @@ public class Endpoints extends RouteBuilder {
             .setHeader("Alert-Id", jsonpath(".alert.id"))
             .setHeader("Alert-Name", jsonpath(".alert.policy.name"))
             .setHeader("Alert-Severity", jsonpath(".alert.policy.severity"))
-            .setHeader("Alert-Lifecycle", jsonpath(".alert.policy.lifecycleStage"))
-            .setHeader("Alert-Deployment", jsonpath(".alert.policy.deployment.name"))
-            .setHeader("Alert-Namespace", jsonpath(".alert.policy.deployment.namespace"))
             .setHeader("Alert-Source", jsonpath(".alert.policy.eventSource"))
+            .setHeader("Alert-Lifecycle", jsonpath(".alert.lifecycleStage"))
+            .setHeader("Alert-Deployment", jsonpath(".alert.deployment.name"))
+            .setHeader("Alert-Namespace", jsonpath(".alert.deployment.namespace"))
             .convertBodyTo(String.class)
             .to("log:alertLog?level=INFO&showBody=true&showHeaders=true");
 
