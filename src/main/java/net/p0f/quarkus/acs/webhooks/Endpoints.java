@@ -47,6 +47,7 @@ public class Endpoints extends RouteBuilder {
             .setHeader("Alert-Lifecycle", jsonpath(".alert.lifecycleStage"))
             .setHeader("Alert-Deployment", jsonpath(".alert.deployment.name"))
             .setHeader("Alert-Namespace", jsonpath(".alert.deployment.namespace"))
+            .setHeader("Alert-Cluster", jsonpath(".alert.deployment.clusterName"))
             .convertBodyTo(String.class)
             .to("log:alertLog?level=INFO&showBody=true&showHeaders=true");
 
